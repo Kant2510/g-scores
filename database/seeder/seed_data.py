@@ -85,7 +85,7 @@ def create_students_and_scores():
             score = Score(
                 student_id=student.id,
                 subject_id=subject_map[subject],
-                score=row[en2vi[subject]],
+                score=row[en2vi[subject]] if pd.notna(row[en2vi[subject]]) else None,
                 foreign_language_code=row['ma_ngoai_ngu'] if subject == 'foreign' and pd.notna(row['ma_ngoai_ngu']) else None
             )
             session.add(score)
