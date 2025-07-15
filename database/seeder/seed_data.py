@@ -11,7 +11,7 @@ from models.foreign_language import ForeignLanguage
 load_dotenv()
 
 # Kết nối DB
-engine = create_engine(os.getenv('POSGRESQL_URL'), echo=True)
+engine = create_engine(os.getenv('POSGRESQL_URL'), echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
 

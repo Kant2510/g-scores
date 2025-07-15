@@ -5,7 +5,7 @@ from models.base import Base
 # Load environment variables
 load_dotenv()
 
-engine = create_engine(os.getenv('POSGRESQL_URL'), echo=True)
+engine = create_engine(os.getenv('POSGRESQL_URL'), echo=False)
 
 def migrate():
 	Base.metadata.drop_all(engine)  # Drop all tables first
