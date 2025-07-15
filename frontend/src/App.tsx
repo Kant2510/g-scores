@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router'
+import Layout from './layout'
+import Dashboard from './components/Dashboard'
+import ScoreQuery from './components/ScoreQuery'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route
+                    path='/scores'
+                    element={
+                        <Layout>
+                            <ScoreQuery />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path='/dashboard'
+                    element={
+                        <Layout>
+                            <Dashboard />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path='/settings'
+                    element={
+                        <Layout>
+                            <h1>Settings</h1>
+                            {/* Settings content goes here */}
+                        </Layout>
+                    }
+                />
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
-export default App;
+export default App
+//             />
+//         </>
+//     )
+// }
+
+// export default App
