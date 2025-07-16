@@ -1,3 +1,12 @@
+@font-face {
+  font-family: rubik;
+  src: url("../public/Rubik-Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: rubik, sans-serif;
+}
+
 .App {
   text-align: center;
 }

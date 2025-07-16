@@ -20,3 +20,10 @@ export interface TopListReportResponse {
     total: number
     [key: string]: number | string // Allow additional properties
 }
+
+export interface ReportContextType {
+    statisticReport: StatisticReportResponse | null
+    topListReport: TopListReportResponse[] | null
+    loading: boolean
+    error: string | null
+}

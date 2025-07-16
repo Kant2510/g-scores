@@ -28,9 +28,9 @@ const MenuBar: React.FC<MenuBarProps> = ({ items }) => {
                     style={{
                         color: 'black',
                         background: '#ffffffff',
+                        margin: '0px 16px 12px',
                         border: 'none',
                         borderRadius: '10px',
-                        marginBottom: '12px',
                         padding: '10px 15px',
                         cursor: 'pointer',
                         fontSize: '16px',

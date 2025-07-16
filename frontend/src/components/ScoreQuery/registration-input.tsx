@@ -12,6 +12,16 @@ const RegistrationInput: React.FC<RegistrationInputProps> = ({ setScoreData }) =
 
     const onSearchHandle = async (value: string) => {
         const request = { registration_number: value }
+        if (!value) {
+            messageApi.error('Please enter a registration number.')
+            return
+        }
+        // regex to validate registration number format
+        const regex = /^\d{8}$/
+        if (!regex.test(value)) {
+            messageApi.error('Invalid registration number format. It should be 8 digits.')
+            return
+        }
         try {
             const response = await retrieveScore(request)
 

@@ -2,7 +2,7 @@ import React from 'react'
 import MenuBar from './components/menu-bar'
 import TopBanner from './components/top-banner'
 
-const sidebarWidth = 220
+const sidebarWidth = 320
 
 const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     return (
