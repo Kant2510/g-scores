@@ -41,7 +41,7 @@ The backend is powered by **Spring Boot**, offering a scalable and secure RESTfu
 ## 📌 Live Demo
 
 -   [Client](https://g-scores-one.vercel.app/)
--   [Server](https://backend-gscore-latest.onrender.com/api/v1/)
+-   [Server](https://backend-gscore-latest.onrender.com/api/v1/health)
 
 ---
 
