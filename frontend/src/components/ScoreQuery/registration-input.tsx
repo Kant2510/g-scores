@@ -1,5 +1,5 @@
 import { Input, message } from 'antd'
-import { ScoreData, ScoreQueryResponse } from '../../types/score'
+import { ScoreData } from '../../types/score'
 import { retrieveScore } from '../../services/api/scores'
 const { Search } = Input
 
@@ -13,13 +13,15 @@ const RegistrationInput: React.FC<RegistrationInputProps> = ({ setScoreData }) =
     const onSearchHandle = async (value: string) => {
         const request = { registration_number: value }
         try {
-            const response = (await retrieveScore(request)) as ScoreQueryResponse[]
+            const response = await retrieveScore(request)
 
-            const score: ScoreData = response.reduce((acc, item) => {
+            const score: ScoreData = response.scores.reduce((acc, item) => {
                 let key = item.subject === 'foreign' ? 'foreign_language' : item.subject
                 acc[key] = item.score
                 return acc
             }, {} as ScoreData)
+            score.registration_number = response.registrationNumber
+            score.foreign_language_code = response.foreignLanguageCode
             setScoreData([score])
         } catch (error: any) {
             console.error('Error fetching score:', error)

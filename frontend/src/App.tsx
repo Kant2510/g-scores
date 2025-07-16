@@ -1,13 +1,15 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router'
 import Layout from './layout'
 import Dashboard from './components/Dashboard'
 import ScoreQuery from './components/ScoreQuery'
+import ScoreChart from './components/Report'
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path='/' element={<Navigate to='/dashboard' replace />} />
                 <Route
                     path='/scores'
                     element={
@@ -21,6 +23,14 @@ function App() {
                     element={
                         <Layout>
                             <Dashboard />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path='/reports'
+                    element={
+                        <Layout>
+                            <ScoreChart />
                         </Layout>
                     }
                 />

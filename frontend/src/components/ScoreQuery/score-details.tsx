@@ -23,7 +23,13 @@ const ScoreDetailsTable: React.FC<{ scoreData: ScoreData[] }> = ({ scoreData }) 
         key: title.toLowerCase().replace(/\s+/g, '_'),
     }))
 
-    return <Table dataSource={scoreData} columns={columns} pagination={false} bordered />
+    const dataWithKeys = scoreData.map((item, index) => ({
+        ...item,
+        registration_number: item.registration_number || 'N/A', // Ensure registration number is present
+        key: index + 1, // Assign a unique key for each row
+    }))
+
+    return <Table dataSource={dataWithKeys} columns={columns} pagination={false} bordered />
 }
 
 export default ScoreDetailsTable

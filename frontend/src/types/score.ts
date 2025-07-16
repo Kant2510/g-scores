@@ -1,9 +1,16 @@
 export interface ScoreQueryRequest {
     registration_number: string
 }
-export interface ScoreQueryResponse {
+
+interface SubjectScore {
     subject: string
     score: number
+}
+
+export interface ScoreQueryResponse {
+    registrationNumber: string
+    scores: SubjectScore[]
+    foreignLanguageCode: string | null // Optional, if applicable
 }
 
 export interface ScoreData {
@@ -17,9 +24,6 @@ export interface ScoreData {
     geography: number
     civil_education: number
     foreign_language: number
-    foreign_language_code: string
-    [key: string]: number | string // Allow additional properties
-}
-type ScoreDetails = {
-    [key: string]: number | string
+    foreign_language_code: string | null // Optional, if applicable
+    [key: string]: number | string | null // Allow additional properties
 }
