@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+    backend:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        container_name: backendscore
+        ports:
+            - "${PORT_REST}:${PORT_REST}"
+        environment:
+            SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+            SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+            SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+            SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+            SPRING_SQL_INIT_MODE: ${SPRING_SQL_INIT_MODE}
+        networks:
+            - "${NETWORK_HOST}"
+
+networks:
+    internal:
+        driver: bridge
