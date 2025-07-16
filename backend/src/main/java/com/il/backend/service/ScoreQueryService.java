@@ -1,9 +1,12 @@
 package com.il.backend.service;
 
+import org.springframework.stereotype.Service;
+
 import com.il.backend.dto.ScoreQueryResponseDTO;
+import com.il.backend.dto.SubjectScoreDTO;
+import com.il.backend.exception.ScoreNotFoundException;
 import com.il.backend.model.Score;
 import com.il.backend.repository.ScoreRepo;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +19,23 @@ public class ScoreQueryService {
         this.scoreRepo = scoreRepo;
     }
 
-    public List<ScoreQueryResponseDTO> getScore(String registrationNumber) {
+    public ScoreQueryResponseDTO getScore(String registrationNumber) {
         List<Score> scores = scoreRepo.findByStudent_Id(registrationNumber);
         if (scores.isEmpty()) {
-            throw new IllegalArgumentException("No scores found for student registration: " + registrationNumber);
+            throw new ScoreNotFoundException("No scores found for student registration: " + registrationNumber);
         }
-        List<ScoreQueryResponseDTO> scoreResponses = new ArrayList<>();
+        List<SubjectScoreDTO> subjectScores = new ArrayList<>();
+        String foreignLanguageCode = null;
         for (Score score : scores) {
-            scoreResponses.add(new ScoreQueryResponseDTO(score.getSubject().getName(), score.getScore()));
+            if (score.getSubject().getName().equals("foreign_language") && score.getForeignLanguage() != null) {
+                foreignLanguageCode = score.getForeignLanguage().getCode();
+            }
+            subjectScores.add(new SubjectScoreDTO(score.getSubject().getName(), score.getScore()));
         }
-        return scoreResponses;
+        return new ScoreQueryResponseDTO(
+                registrationNumber.toLowerCase(),
+                subjectScores.stream().toList(),
+                foreignLanguageCode
+        );
     }
 }
