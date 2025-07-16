@@ -1,17 +1,15 @@
-from sqlalchemy import create_engine
 from dotenv import load_dotenv
-import os
 from models.base import Base
+from models.subject import Subject
+from models.foreign_language import ForeignLanguage
+from models.student import Student
+from models.score import Score
 # Load environment variables
 load_dotenv()
 
-engine = create_engine(os.getenv('POSGRESQL_URL'), echo=False)
-
-def migrate():
+def migrate(engine):
+	print("📦 Tables to be created:", Base.metadata.tables.keys())
 	Base.metadata.drop_all(engine)  # Drop all tables first
 	print("✅ Tables dropped.")
 	Base.metadata.create_all(engine)
 	print("✅ Tables created.")
-
-# if __name__ == "__main__":
-#     migrate()
