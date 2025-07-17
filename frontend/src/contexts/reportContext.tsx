@@ -1,11 +1,12 @@
 import { createContext, useReducer, useEffect } from 'react'
 import { reportReducer } from '../reducers/reportReducer'
-import { initialReportState } from '../constants/reports'
-import { generateScoreStatisticReport, getTopListReport } from '../services/api/reports'
+import { initialReportState } from '../constants/report'
+import { generateScoreStatisticReport, getTopListReport } from '../services/api/report'
+import { StatisticReportResponse, TopListReportResponse } from '../types/report'
 
 interface ReportContextType {
     reportState: typeof initialReportState
-    dispatch: React.Dispatch<{ type: string; payload: any }>
+    dispatch: React.Dispatch<{ type: string; payload: StatisticReportResponse | TopListReportResponse[] }>
     loadStatisticReport: () => Promise<void>
     loadTopListReport: () => Promise<void>
 }

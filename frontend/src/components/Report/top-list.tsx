@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table } from 'antd'
 import { createStyles } from 'antd-style'
+import { TopListReportResponse } from '../../types/report'
 
 const useStyle = createStyles(({ css }) => {
     return {
@@ -16,16 +17,8 @@ const useStyle = createStyles(({ css }) => {
         `,
     }
 })
-interface TopGroupAListData {
-    registration_number: string
-    math: number
-    physics: number
-    chemistry: number
-    total: number
-    [key: string]: number | string // Allow additional properties
-}
 
-const TopGroupAList: React.FC<{ data: TopGroupAListData[] }> = ({ data }) => {
+const TopGroupAList: React.FC<{ data: TopListReportResponse[] }> = ({ data }) => {
     const { styles } = useStyle()
 
     const columnsTag = ['Registration Number', 'Math', 'Physics', 'Chemistry', 'Total']

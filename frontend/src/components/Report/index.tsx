@@ -3,6 +3,7 @@ import { Select, Card, Row, Col, Typography, Skeleton } from 'antd'
 import ChartComponent from './chart'
 import TopGroupAList from './top-list'
 import { ReportContext } from '../../contexts/reportContext'
+import { useMediaQuery } from 'react-responsive'
 
 const { Title } = Typography
 
@@ -18,7 +19,7 @@ const Report: React.FC = () => {
         reportState: { statisticReport: statisticReportData, topListReport: topListReportData },
     } = useContext(ReportContext)
     const [selectedSubject, setSelectedSubject] = useState('total')
-
+    const isMobile = useMediaQuery({ maxWidth: 767 })
     const chartData = () => {
         const subjectStats = statisticReportData?.statistics.find((s) => s.subject === selectedSubject)
         if (!subjectStats) return []
@@ -33,36 +34,41 @@ const Report: React.FC = () => {
 
     return (
         <Card title='📚 Student Score Report' style={{ maxWidth: '100%', margin: 'auto' }}>
-            <Row>
-                <Col span={12}>
-                    <Title level={4} style={{ marginBottom: 20 }}>
+            <Row gutter={[16, 16]}>
+                <Col xs={24} md={12}>
+                    <Title level={4} style={{ marginBottom: 20, textAlign: isMobile ? 'center' : 'left' }}>
                         {selectedSubject.replace('_', ' ').toUpperCase()} Score Statistics
                     </Title>
-                    {/* {statisticReportData ? <ChartComponent data={chartData()} /> : <Skeleton active />} */}
+
                     <Skeleton active loading={!statisticReportData}>
-                        <Select
-                            showSearch
-                            placeholder='Select a subject'
-                            style={{ width: 200, marginBottom: 20 }}
-                            value={selectedSubject}
-                            onChange={setSelectedSubject}
-                            options={statisticReportData?.subject.map((subject) => ({
-                                value: subject,
-                                label: subject.replace('_', ' ').toUpperCase(),
-                            }))}
-                        />
-                        <ChartComponent data={chartData()} />
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: isMobile ? 'center' : 'flex-start',
+                            }}
+                        >
+                            <Select
+                                showSearch
+                                placeholder='Select a subject'
+                                style={{ width: isMobile ? '100%' : 200, marginBottom: 20 }}
+                                value={selectedSubject}
+                                onChange={setSelectedSubject}
+                                options={statisticReportData?.subject.map((subject: String) => ({
+                                    value: subject,
+                                    label: subject.replace('_', ' ').toUpperCase(),
+                                }))}
+                            />
+                            <ChartComponent data={chartData()} />
+                        </div>
                     </Skeleton>
                 </Col>
-                <Col span={12}>
-                    <Title level={4} style={{ marginBottom: 20 }}>
+
+                <Col xs={24} md={12}>
+                    <Title level={4} style={{ marginBottom: 20, textAlign: isMobile ? 'center' : 'left' }}>
                         Top 10 Group A Students
                     </Title>
-                    {/* {topListReportData?.length === 0 ? (
-                        <Skeleton active />
-                    ) : (
-                        <TopGroupAList data={topListReportData || []} />
-                    )} */}
+
                     <Skeleton active loading={!topListReportData || topListReportData.length === 0}>
                         {topListReportData && topListReportData.length > 0 && (
                             <TopGroupAList data={topListReportData} />

@@ -1,6 +1,6 @@
 import { Input, message } from 'antd'
 import { ScoreData } from '../../types/score'
-import { retrieveScore } from '../../services/api/scores'
+import { retrieveScore } from '../../services/api/score'
 const { Search } = Input
 
 interface RegistrationInputProps {

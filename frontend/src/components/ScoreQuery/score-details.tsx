@@ -29,7 +29,9 @@ const ScoreDetailsTable: React.FC<{ scoreData: ScoreData[] }> = ({ scoreData }) 
         key: index + 1, // Assign a unique key for each row
     }))
 
-    return <Table dataSource={dataWithKeys} columns={columns} pagination={false} bordered />
+    return (
+        <Table dataSource={dataWithKeys} columns={columns} scroll={{ x: 'max-content' }} pagination={false} bordered />
+    )
 }
 
 export default ScoreDetailsTable

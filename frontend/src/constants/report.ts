@@ -1,8 +1,11 @@
 import { ReportContextType } from '../types/report'
 
 export const initialReportState: ReportContextType = {
-    statisticReport: null,
-    topListReport: null,
+    statisticReport: {
+        subject: [],
+        statistics: [],
+    },
+    topListReport: [],
     loading: false,
     error: null,
 }

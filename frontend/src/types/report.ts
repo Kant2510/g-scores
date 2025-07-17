@@ -22,8 +22,8 @@ export interface TopListReportResponse {
 }
 
 export interface ReportContextType {
-    statisticReport: StatisticReportResponse | null
-    topListReport: TopListReportResponse[] | null
+    statisticReport: StatisticReportResponse
+    topListReport: TopListReportResponse[]
     loading: boolean
     error: string | null
 }
