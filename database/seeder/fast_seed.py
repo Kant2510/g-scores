@@ -30,18 +30,7 @@ def fast_seed():
     conn.commit()
     print("✅ Seeded Students successfully.")
     sleep(5)
-    # for i in range(0, 10):
-    #     with open(f'data/{prefix2}s/merged_chunks_{i}.csv', 'r') as f:
-    #         sql = f"""
-    #             COPY scores(student_id, subject_id, score, foreign_language_code)
-    #             FROM STDIN
-    #             WITH (FORMAT csv, HEADER true, DELIMITER ',');
-    #         """
-    #         cur.copy_expert(sql, f)
-    #     conn.commit()
-    #     print(f"✅ Seeded Scores batch {i} successfully.")
-    # # print("⏳ Waiting for 5 seconds before next batch...")
-    #     sleep(3)
+    
     with open(f'data/{prefix2}s/merged_{prefix2}.csv', 'r') as f:
         sql = """
             COPY scores(student_id, subject_id, score, foreign_language_code)

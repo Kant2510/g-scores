@@ -7,26 +7,12 @@ from models.foreign_language import ForeignLanguage
 load_dotenv()
 
 # Subjects
-en2vi = {
-    'math': 'toan',
-    'physics': 'vat_li',
-    'chemistry': 'hoa_hoc',
-    'biology': 'sinh_hoc',
-    'literature': 'ngu_van',
-    'geography': 'dia_li',
-    'history': 'lich_su',
-    'civic_education': 'gdcd',
-    'foreign_language': 'ngoai_ngu'
-}
 subjects = ['math', 'physics', 'chemistry', 'biology', 'literature', 'geography', 'history', 'civic_education', 'foreign_language']
-subject_map = {}
 def create_subjects(session):
     for name in subjects:
         subj = Subject(name=name)
         session.add(subj)
         session.flush()
-        subj = session.query(Subject).filter_by(name=name).first()
-        subject_map[name] = subj.id
     session.commit()
 
 # Foreign Languages
