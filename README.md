@@ -89,6 +89,7 @@ Ensure you have the following installed on your machine:
     ```bash
     // First you must cd to database/
     cd database
+    pip install requirements.txt
     python split.py
     python run_chunks.py
     python merge.py
@@ -106,6 +107,7 @@ Ensure you have the following installed on your machine:
 5. (Frontend Setup) Run the project
     ```bash
     // cd to frontend/
+    yarn install
     yarn start
     ```
 
@@ -129,6 +131,33 @@ Ensure you have the following installed on your machine:
     ```
     http://localhost:3000/
     ```
+
+---
+
+<p align="right"><a href="#readme-top">⬆️</a></p>
+
+## 📄 API Documentation
+
+1. Score query:
+
+-   Endpoint: https://backend-gscore-latest.onrender.com/api/v1/scores/search
+-   Method: POST
+-   Request body:
+    ```bash
+    {
+        "registration_number": "12345678"
+    }
+    ```
+
+2. Score statistic report:
+
+-   Endpoint: https://backend-gscore-latest.onrender.com/api/v1/reports/statistic
+-   Method: GET
+
+3. Top 10 group A report:
+
+-   Endpoint: https://backend-gscore-latest.onrender.com/api/v1/reports/top-list
+-   Method: GET
 
 ---
 
