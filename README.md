@@ -13,6 +13,7 @@
     -   [📋 Prerequisites](#-prerequisites)
     -   [📦 Installation](#-installation)
     -   [🚀 Usage](#-usage)
+-   [📄 API Documentation](#-api-documentation)
 -   [🤝 Contributing](#-contributing)
 -   [📬 Contact](#-contact)
 
@@ -74,7 +75,7 @@ Ensure you have the following installed on your machine:
 -   **Java 17** or **21**
 -   **Python 3**
 -   **Maven**
--   **Docker & Docker Compose**
+-   **Docker** & **Docker Compose**
 -   **PostgreSQL** (if not using Docker for DB)
 -   **Git**
 
@@ -95,18 +96,17 @@ Ensure you have the following installed on your machine:
     python merge.py
     python main.py
     ```
-3. (Backend Setup) Build the project
+3. (Backend Setup) Build the backend
     ```bash
-    // cd to backend/
+    // Make sure you are in backend/ folder
+    cd backend
     ./mvnw clean install
-    ```
-4. (Backend Setup) Run with Docker
-    ```bash
     docker-compose up --build
     ```
-5. (Frontend Setup) Run the project
+4. (Frontend Setup) Run the frontend
     ```bash
-    // cd to frontend/
+    // Make sure you are in frontend/ folder
+    cd frontend
     yarn install
     yarn start
     ```
@@ -125,7 +125,7 @@ Ensure you have the following installed on your machine:
     ```
 -   Inspect logs:
     ```bash
-    docker logs backend-gscore
+    docker logs backend
     ```
 -   Try the project:
     ```

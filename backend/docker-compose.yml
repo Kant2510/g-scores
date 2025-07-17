@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-    backend:
+    g-scores:
         build:
             context: ./
             dockerfile: Dockerfile
-        container_name: backendscore
+        container_name: backend
         ports:
             - "${PORT_REST}:${PORT_REST}"
         environment:
