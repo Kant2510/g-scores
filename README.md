@@ -86,7 +86,12 @@ Ensure you have the following installed on your machine:
     git clone https://github.com/Kant2510/g-scores.git
     cd g-score
     ```
-2. (Database Setup) .csv to PostgreSQL
+2. (Database Setup) Install package bc.exe (for Git Bash on Windows)
+
+-   Install package from: https://mirror.msys2.org/msys/x86_64/bc-1.08.2-1-x86_64.pkg.tar.zst
+-   Extract then copy from usr/bin/bc.exe to C:/Program Files/Git/usr/bin
+
+3. (Database Setup) .csv to PostgreSQL
     ```bash
     // First you must cd to database/
     cd database
@@ -94,14 +99,14 @@ Ensure you have the following installed on your machine:
     // If you use Windows, run this command on Git Bash
     sh run.sh
     ```
-3. (Backend Setup) Build the backend
+4. (Backend Setup) Build the backend
     ```bash
     // Make sure you are in backend/ folder
     cd backend
     ./mvnw clean install
     docker-compose up --build
     ```
-4. (Frontend Setup) Run the frontend
+5. (Frontend Setup) Run the frontend
     ```bash
     // Make sure you are in frontend/ folder
     cd frontend
