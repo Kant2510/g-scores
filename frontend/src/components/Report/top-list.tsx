@@ -35,14 +35,17 @@ const TopGroupAList: React.FC<{ data: TopListReportResponse[] }> = ({ data }) =>
     }))
 
     return (
-        <Table
-            className={styles.customTable}
-            dataSource={dataWithKeys}
-            columns={columns}
-            scroll={{ y: 55 * 5 }}
-            pagination={false}
-            bordered
-        />
+        <div style={{ overflowY: 'auto' }}>
+            <Table
+                className={styles.customTable}
+                dataSource={dataWithKeys}
+                columns={columns}
+                scroll={{ x: 'max-content' }}
+                style={{ height: 300 }}
+                pagination={false}
+                bordered
+            />
+        </div>
     )
 }
 
