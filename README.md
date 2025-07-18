@@ -91,10 +91,8 @@ Ensure you have the following installed on your machine:
     // First you must cd to database/
     cd database
     pip install requirements.txt
-    python split.py
-    python run_chunks.py
-    python merge.py
-    python main.py
+    // If you use Windows, run this command on Git Bash
+    sh run.sh
     ```
 3. (Backend Setup) Build the backend
     ```bash
