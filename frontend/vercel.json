@@ -1,0 +1,8 @@
+{
+	"rewrites": [
+		{
+			"source": "/api/:path*",
+			"destination": "http://kant2510.duckdns.org/api/v1/:path*"
+		}
+	]
+}

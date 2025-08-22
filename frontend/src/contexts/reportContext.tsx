@@ -27,7 +27,13 @@ const ReportContextProvider: React.FC<ReportContextProviderProps> = ({ children 
 
     const loadStatisticReport = async () => {
         try {
+            const start = performance.now()
+
+            // Code block or function to measure
             const statisticReportResponse = await generateScoreStatisticReport()
+
+            const end = performance.now()
+            console.log(`Execution time: ${end - start} ms`)
             dispatch({
                 type: 'SET_STATISTIC_REPORT',
                 payload: statisticReportResponse,
@@ -42,7 +48,13 @@ const ReportContextProvider: React.FC<ReportContextProviderProps> = ({ children 
 
     const loadTopListReport = async () => {
         try {
+            const start = performance.now()
+
+            // Code block or function to measure
             const topListReportResponse = await getTopListReport()
+
+            const end = performance.now()
+            console.log(`Execution time: ${end - start} ms`)
             dispatch({
                 type: 'SET_TOP_LIST_REPORT',
                 payload: topListReportResponse,
